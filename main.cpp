@@ -6,6 +6,7 @@ using namespace std;
 
 int main(){
 	cout << "input simulation size" << endl;
+
 	int N_size;
 	try {
 		cin >> N_size;
@@ -26,13 +27,20 @@ int main(){
 	} catch (...) {
 		return 1;
 	}
-	cout << "input simulationcycle" << endl;
+	cout << "input simulation cycle" << endl;
 	int Cyc;
 	try {
 		cin >> Cyc;
 	} catch (...) {
 		return 1;
 	}
+
+	ofstream par_txt("par.txt");
+	par_txt << "simulation_size " << N_size*N_size << endl;
+	par_txt << "magnetic_field " << H << endl;
+	par_txt << "Temperature " << temp << endl;
+	par_txt << "simulation_cycle" << Cyc << endl;
+	par_txt.close();
 
 	double h_eff = H*mu_avog;
 
