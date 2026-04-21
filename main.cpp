@@ -39,7 +39,7 @@ int main(){
 	par_txt << "simulation_size " << N_size*N_size << endl;
 	par_txt << "magnetic_field " << H  << "T" << endl;
 	par_txt << "Temperature " << temp << "K" << endl;
-	par_txt << "simulation_cycle" << Cyc << endl;
+	par_txt << "simulation_cycle " << Cyc << endl;
 	par_txt.close();
 
 	double h_eff = H*mu_avog;
