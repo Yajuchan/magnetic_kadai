@@ -57,8 +57,8 @@ void objSystem::gibbs_sampling(){
     uniform_int_distribution<> point_rand(0,N-1);
     int i = point_rand(engine);
     int j = point_rand(engine);
-    double E_plus = -1.0;
-    double E_minus = -1.0;
+    double E_plus = -99.0;
+    double E_minus = -99.0;
     this->spinsArray.at((i)).at(j).spinVector = 1;
     E_plus = this->calculationEnergy();
     this->spinsArray.at((i)).at(j).spinVector = -1;

@@ -13,7 +13,7 @@ int main(){
 	} catch (...) {
 		return 1;
 	}
-	cout << "input magnetic field" << endl;
+	cout << "input magnetic field(T)" << endl;
 	double H;
 	try {
 		cin >> H;
@@ -37,8 +37,8 @@ int main(){
 
 	ofstream par_txt("par.txt");
 	par_txt << "simulation_size " << N_size*N_size << endl;
-	par_txt << "magnetic_field " << H << endl;
-	par_txt << "Temperature " << temp << endl;
+	par_txt << "magnetic_field " << H  << "T" << endl;
+	par_txt << "Temperature " << temp << "K" << endl;
 	par_txt << "simulation_cycle" << Cyc << endl;
 	par_txt.close();
 
