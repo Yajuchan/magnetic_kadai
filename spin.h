@@ -1,0 +1,3 @@
+union SpinStruct{
+	int spinVector;
+};
