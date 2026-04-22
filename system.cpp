@@ -25,7 +25,7 @@ double objSystem::calculationEnergy(){
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < N; j++){
 			int sig_i = this->spinsArray.at(i).at(j).spinVector;
-			E += -1.0 * h * sig_i;
+			E += -1.0 * h * static_cast<double>(sig_i);
 		}
 	}
 
@@ -63,15 +63,15 @@ void objSystem::gibbs_sampling(){
     E_plus = this->calculationEnergy();
     this->spinsArray.at((i)).at(j).spinVector = -1;
     E_minus = this->calculationEnergy();
-    double RT = gas_const*this->temperature; //mol毎のエネルギーを考えるのでボルツマン定数を気体定数にする. 
-    double exp_plus = exp(-1.0*E_plus/RT);
-    double exp_minus = exp(-1.0*E_minus/RT);
+    double RT = gas_const*(this->temperature); //mol毎のエネルギーを考えるのでボルツマン定数を気体定数にする. 
+    double exp_plus = exp(-1.0*(E_plus/RT));
+    double exp_minus = exp(-1.0*(E_minus/RT));
     uniform_real_distribution<> sampling_rand(0.0,exp_plus+exp_minus);
     double sampling_num = sampling_rand(engine);
     if(0.0 <= sampling_num && sampling_num <= exp_plus){
-        this->spinsArray.at((i)).at(j).spinVector = 1;
+        this->spinsArray.at(i).at(j).spinVector = 1;
     }else {
-		this->spinsArray.at((i)).at(j).spinVector = -1;
+		this->spinsArray.at(i).at(j).spinVector = -1;
 	}
     return;
 }

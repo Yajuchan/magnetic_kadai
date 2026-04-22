@@ -43,8 +43,9 @@ int main(){
 	par_txt.close();
 
 	double h_eff = H*mu_avog;
+	double Jinteract = 0.0;//相互作用の係数. 今回は無視するので0.
 
-	objSystem simulation_system(H,0.0,temp,N_size);
+	objSystem simulation_system(H,Jinteract,temp,N_size);
 
 	vector<double> energy_step(Cyc,-1.0);
 	for(int i = 0; i < Cyc; i++){
